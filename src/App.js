@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+import Alert from './Alert/alert';
+import Portfolio from './component/Portfolio';
 
 function App() {
+  const [isAlertOpen , setIsAlertOpen] = useState(true);
+  const [alertMessage , setAlertMessage] = useState("");
+  const [alertType , setAlertType] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+   <Portfolio  setAlertMessage={setAlertMessage} setAlertType={setAlertType} setIsAlertOpen={setIsAlertOpen}/>
+   <div className={"fixed bottom-4 right-8"}>
+   <Alert setAlertMessage={setAlertMessage} setAlertType={setAlertType} alertType={alertType} alertMessage={alertMessage} isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}/>
+ </div>
+ </>
   );
 }
 
